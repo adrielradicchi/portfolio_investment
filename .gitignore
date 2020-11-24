@@ -28,3 +28,5 @@ portfolio_investment-*.tar
 /priv/static/
 
 /.elixir_ls/
+
+/.vscode/
