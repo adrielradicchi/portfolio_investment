@@ -2,7 +2,6 @@ defmodule PortfolioInvestmentWeb.Router do
   use PortfolioInvestmentWeb, :router
 
   pipeline :api do
-    plug CORSPlug, origin: "*"
     plug :accepts, ["json"]
   end
 
