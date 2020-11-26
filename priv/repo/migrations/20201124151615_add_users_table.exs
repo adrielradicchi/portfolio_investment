@@ -8,6 +8,7 @@ defmodule PortfolioInvestment.Repo.Migrations.AddUsersTable do
       add :email, :string
       add :password_hash, :string
       add :investment_limit, :decimal
+      add :usa_stock_limit, :integer
       timestamps()
     end
   end

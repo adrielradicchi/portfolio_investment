@@ -2,6 +2,8 @@ defmodule PortfolioInvestment.User do
     use Ecto.Schema
     import Ecto.Changeset
 
+    alias PortfolioInvestment.User.Wallet
+
     @primary_key {:id, Ecto.UUID, autogenerate: true}
 
     schema "users" do
@@ -10,6 +12,8 @@ defmodule PortfolioInvestment.User do
         field :password, :string, virtual: true
         field :password_hash, :string
         field :investment_limit, :decimal
+        field :usa_stock_limit, :integer
+        has_many(:wallet, Wallet)
 
         timestamps()
     end
@@ -20,7 +24,7 @@ defmodule PortfolioInvestment.User do
         |> apply_action(:insert)
     end
 
-    @required_params [:name, :email, :password, :investment_limit]
+    @required_params [:name, :email, :password, :investment_limit, :usa_stock_limit]
 
     def changeset(params), do: create_changeset(%__MODULE__{}, params)
 

@@ -20,6 +20,6 @@ defmodule PortfolioInvestment.User.Get do
 
 	defp fetch_user(uuid), do: Repo.get(User, uuid)
 
-	defp get_user(user) when not is_nil(user), do: {:ok, user}
+	defp get_user(user) when not is_nil(user), do: {:ok, Repo.preload(user, :wallet)}
 	defp get_user(_user), do: {:error, %{message: "User not found", status: 404}}
 end

@@ -12,6 +12,8 @@ defmodule PortfolioInvestmentWeb.Router do
     # post "/users", UsersController, :create
 
     resources "/users", UsersController
+    resources "/wallets", UserWalletsController
+    resources "/stock", WalletStocksController
 
   end
 
