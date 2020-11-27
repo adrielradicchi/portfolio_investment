@@ -4,17 +4,20 @@
 # remember to add this file to your .gitignore.
 use Mix.Config
 
+
 database_url =
-  System.get_env("ecto://d96db040-1743-42f9-8c5c-8fe468a3424c-user:pw-5762f29d-5a77-45c4-b275-2815910854aa@postgres-free-tier-v2020.gigalixir.com:5432/d96db040-1743-42f9-8c5c-8fe468a3424c") ||
+  System.get_env("DATABASE_URL") || ""
     raise """
     environment variable DATABASE_URL is missing.
     For example: ecto://USER:PASS@HOST/DATABASE
     """
 
 config :portfolio_investment, PortfolioInvestment.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "",
   # ssl: true,
-  url: database_url,
-  pool_size: String.to_integer(System.get_env("2") || "10")
+  url: "${DATABASE_URL}",
+  pool_size: String.to_integer("${POOL_SIZE}" || "10")
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
