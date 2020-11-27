@@ -13,7 +13,7 @@ database_url =
     """
 
 config :portfolio_investment, PortfolioInvestment.Repo,
-  url: "${DATABASE_URL}",
+  url: database_url,
   ssl: true,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
