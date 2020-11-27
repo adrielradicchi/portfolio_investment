@@ -13,11 +13,9 @@ database_url =
     """
 
 config :portfolio_investment, PortfolioInvestment.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  url: "${DATABASE_URL}",
-  database: "",
+  url: database_url,
   ssl: true,
-  pool_size: 2
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
