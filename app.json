@@ -1,0 +1,27 @@
+{
+  "name": "portfolio_investment",
+  "description": "OAuth2 provider microservice endpoints.",
+  "repository": "https://github.com/adrielradicchi/portfolio_investment",
+  "keywords": ["phoenix", "ecto", "portfolio_investment"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git"
+    }
+  ],
+  "env": {
+    "SECRET_KEY_BASE": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "POOL_SIZE": {
+      "description": "Database pool size",
+      "value": "18"
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "scripts": {
+    "postdeploy": "MIX_ENV=prod mix ecto.migrate"
+  }
+}
