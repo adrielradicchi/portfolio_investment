@@ -20,7 +20,7 @@ defmodule PortfolioInvestment.MixProject do
   def application do
     [
       mod: {PortfolioInvestment.Application, []},
-      extra_applications: [:logger, :runtime_tools, :mime, :telemetry, :cors_plug]
+      extra_applications: [:logger, :runtime_tools, :mime, :telemetry]
     ]
   end
 
