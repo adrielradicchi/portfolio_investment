@@ -18,16 +18,15 @@ config :portfolio_investment, PortfolioInvestmentWeb.Endpoint,
   pubsub_server: PortfolioInvestment.PubSub,
   live_view: [signing_salt: "hXhnTpHn"]
 
+config :cors_plug,
+  origin: ["*"],
+  max_age: 86400,
+  methods: ["GET", "POST","OPTIONS","PUT","DELETE"]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
-
-config :cors_plug,
-  origin: ["*"],
-  max_age: 86400,
-  methods: ["GET", "POST","OPTIONS","PUT","DELETE"],
-  send_preflight_response?: true
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason

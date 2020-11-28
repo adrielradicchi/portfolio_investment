@@ -2,6 +2,7 @@ defmodule PortfolioInvestmentWeb.Router do
   use PortfolioInvestmentWeb, :router
 
   pipeline :api do
+    plug CORSPlug, origin: "*", max_age: 86400, methods: ["GET", "POST","OPTIONS","PUT","DELETE"]
     plug :accepts, ["json"]
   end
 
@@ -10,7 +11,7 @@ defmodule PortfolioInvestmentWeb.Router do
     pipe_through :api
 
     # post "/users", UsersController, :create
-
+    # options "/users", UsersController, :options
     resources "/users", UsersController
     resources "/wallets", UserWalletsController
     resources "/stock", WalletStocksController
