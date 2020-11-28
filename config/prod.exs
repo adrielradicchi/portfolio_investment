@@ -15,7 +15,7 @@ config :portfolio_investment, PortfolioInvestmentWeb.Endpoint,
   server: true,
   secret_key_base: "${SECRET_KEY_BASE}",
   url: [schema: "https", host: "enigmatic-springs-21467.herokuapp.com", port: 443],
-  force_ssl: [hsts: true, rewrite_on: [:x_forwarded_host, :x_forwarded_port, :x_forwarded_proto]],
+  # force_ssl: [hsts: true, rewrite_on: [:x_forwarded_host, :x_forwarded_port, :x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
