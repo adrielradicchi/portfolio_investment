@@ -20,7 +20,7 @@ defmodule PortfolioInvestment.MixProject do
   def application do
     [
       mod: {PortfolioInvestment.Application, []},
-      extra_applications: [:logger, :runtime_tools, :mime, :telemetry, :cors_plug]
+      extra_applications: [:logger, :runtime_tools, :mime, :telemetry]
     ]
   end
 
@@ -44,8 +44,7 @@ defmodule PortfolioInvestment.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:argon2_elixir, "~> 2.0"},
-      {:tesla, "~> 1.3.0"},
-      {:cors_plug, "~> 2.0"}
+      {:tesla, "~> 1.3.0"}
     ]
   end
 
