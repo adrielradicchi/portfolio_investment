@@ -1,15 +1,25 @@
 defmodule PortfolioInvestmentWeb.UsersController do
 	use PortfolioInvestmentWeb, :controller
 
+	alias PortfolioInvestmentWeb.Auth.Guardian
 	action_fallback PortfolioInvestmentWeb.FallbackController
 
 	def create(conn, params) do
-		with {:ok, user} <- PortfolioInvestment.create_user(params) do
-			conn
-			|> put_status(:created)
-			|> render("create.json", %{user: user})
-		end
-	end
+    with {:ok, user} <- PortfolioInvestment.create_user(params),
+         {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
+      conn
+      |> put_status(:created)
+      |> render("create.json", %{user: user, token: token})
+    end
+  end
+
+  def sign_in(conn, params) do
+    with {:ok, token} <- Guardian.authenticate(params)do
+      conn
+      |> put_status(:ok)
+      |> render("sign_in.json", token: token)
+    end
+  end
 
 	def delete(conn, %{"id" => id}) do
 		id

@@ -6,15 +6,25 @@ defmodule PortfolioInvestmentWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug PortfolioInvestmentWeb.Auth.Pipeline
+  end
 
   scope "/api", PortfolioInvestmentWeb do
     pipe_through :api
 
-    # post "/users", UsersController, :create
-    # options "/users", UsersController, :options
-    resources "/users", UsersController
-    resources "/wallets", UserWalletsController
-    resources "/stock", WalletStocksController
+    post "/users", UsersController, :create
+    post "/users/signin", UsersController, :sign_in
+
+  end
+
+  scope "/api", PortfolioInvestmentWeb do
+    pipe_through [:api, :auth]
+
+    resources "/users", UsersController, only: [:show, :delete, :update]
+    get "/stocks/:name", StockController, :show
+    resources "/wallets", UserWalletsController, only: [:create, :show, :delete, :update]
+    resources "/wallet_stocks", WalletStocksController, only: [:create, :show, :delete, :update]
 
   end
 

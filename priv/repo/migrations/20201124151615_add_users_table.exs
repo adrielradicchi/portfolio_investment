@@ -11,5 +11,7 @@ defmodule PortfolioInvestment.Repo.Migrations.AddUsersTable do
       add :usa_stock_limit, :integer
       timestamps()
     end
+
+    create unique_index(:users, :email, name: :unique_email)
   end
 end

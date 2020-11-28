@@ -3,7 +3,7 @@ defmodule PortfolioInvestmentWeb.UsersView do
 
   alias PortfolioInvestment.{User, User.Wallet}
 
-  def render("create.json", %{user: %User{id: id, name: name, email: email, investment_limit: investment_limit, usa_stock_limit: usa_stock_limit, inserted_at: inserted_at}}) do
+  def render("create.json", %{user: %User{id: id, name: name, email: email, investment_limit: investment_limit, usa_stock_limit: usa_stock_limit, inserted_at: inserted_at}, token: token}) do
     %{
       message: "User created!",
       user: %{
@@ -13,9 +13,12 @@ defmodule PortfolioInvestmentWeb.UsersView do
         investment_limit: investment_limit,
         usa_stock_limit: usa_stock_limit,
         inserted_at: inserted_at
-      }
+      },
+      token: token
     }
   end
+
+  def render("sign_in.json", %{token: token}), do: %{token: token}
 
   def render("update.json", %{user: %User{id: id, name: name, email: email, investment_limit: investment_limit, usa_stock_limit: usa_stock_limit, inserted_at: inserted_at, updated_at: updated_at}}) do
     %{

@@ -1,4 +1,4 @@
-defmodule PortfolioInvestmentWeb.PokemonsController do
+defmodule PortfolioInvestmentWeb.StockController do
   use PortfolioInvestmentWeb, :controller
 
   action_fallback PortfolioInvestmentWeb.FallbackController

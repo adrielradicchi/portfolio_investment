@@ -36,6 +36,7 @@ defmodule PortfolioInvestment.User do
         |> validate_required(@required_params)
         |> validate_format(:email, ~r/^[A-Za-z0-9\._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}$/)
         |> validate_length(:password, min: 6)
+        |> unique_constraint(:unique_email, name: :email)
         |> put_pass_hash()
     end
 

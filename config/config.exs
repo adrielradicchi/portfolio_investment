@@ -31,6 +31,16 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :portfolio_investment, PortfolioInvestmentWeb.Auth.Guardian,
+  issuer: "portfolio_investment",
+  secret_key: "dvD1E5DjCNc8Py45ym/dVuFYBhD9qfcfWo4lFByybe3wp5ZJJEz0RlDC/HZh+qtT"
+
+config :portfolio_investment, PortfolioInvestmentWeb.Auth.Pipeline,
+  module: PortfolioInvestmentWeb.Auth.Guardian,
+  error_handler: PortfolioInvestmentWeb.Auth.ErrorHandler,
+  token_type: ["access","refresh"],
+  ttl: {1, :day}
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
