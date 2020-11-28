@@ -3,7 +3,11 @@ defmodule PortfolioInvestmentWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Plug.Static,
+      at: "/", from: :my_app, gzip: false,
+      headers: %{"Access-Control-Allow-Origin" => "*"}
   end
+
 
   scope "/api", PortfolioInvestmentWeb do
     pipe_through :api
