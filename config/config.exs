@@ -21,9 +21,7 @@ config :portfolio_investment, PortfolioInvestmentWeb.Endpoint,
 config :cors_plug,
   origin: ["*"],
   max_age: 86400,
-  methods: ["GET", "POST","OPTIONS","PUT","DELETE"],
-  content_type: "application/x-www-form-urlencoded",
-  send_preflight_response?: false
+  methods: ["GET", "POST","OPTIONS","PUT","DELETE"]
 
 # Configures Elixir's Logger
 config :logger, :console,
