@@ -14,10 +14,10 @@ defmodule PortfolioInvestmentWeb.UsersController do
   end
 
   def sign_in(conn, params) do
-    with {:ok, token} <- Guardian.authenticate(params)do
+    with {:ok, %{token: token, user_id: id}} <- Guardian.authenticate(params)do
       conn
       |> put_status(:ok)
-      |> render("sign_in.json", token: token)
+      |> render("sign_in.json", %{token: token, user_id: id})
     end
   end
 

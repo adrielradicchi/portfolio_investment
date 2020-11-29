@@ -18,7 +18,7 @@ defmodule PortfolioInvestmentWeb.UsersView do
     }
   end
 
-  def render("sign_in.json", %{token: token}), do: %{token: token}
+  def render("sign_in.json", %{token: token, user_id: id}), do: %{token: token, user_id: id}
 
   def render("update.json", %{user: %User{id: id, name: name, email: email, investment_limit: investment_limit, usa_stock_limit: usa_stock_limit, inserted_at: inserted_at, updated_at: updated_at}}) do
     %{

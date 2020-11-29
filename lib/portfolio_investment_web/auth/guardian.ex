@@ -34,7 +34,7 @@ defmodule PortfolioInvestmentWeb.Auth.Guardian do
 
   defp create_token(is_valid_password, user) when is_valid_password == true do
     {:ok, token, _claims} = encode_and_sign(user)
-    {:ok, token}
+    {:ok, %{token: token, user_id: user.id}}
   end
 
   defp create_token(is_valid_password, _user) when is_valid_password == false, do: {:error, %{message: "User unauthorized", status: 401}}
