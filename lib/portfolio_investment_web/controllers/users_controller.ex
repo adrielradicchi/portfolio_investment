@@ -39,9 +39,10 @@ defmodule PortfolioInvestmentWeb.UsersController do
 		|> handle_response(conn, "update.json", :ok)
 	end
 
-	def options(conn, params) do
-		{:ok, params}
-		|> handle_delete(conn)
+	def options(conn, _arams) do
+		conn
+		|> put_status(:ok)
+		|> text("")
 	end
 
 	defp handle_delete({:ok, _user}, conn) do
